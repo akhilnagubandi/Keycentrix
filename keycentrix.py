@@ -180,6 +180,7 @@ def maximizeToys(amount,prices):
             return count       #if price exceeds the amount avaialble, return the count
         else:
             count = count + 1   #if not add the toy to the list
+            amount = amount-p
     return count
 
 
