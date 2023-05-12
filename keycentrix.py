@@ -1,10 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[37]:
+
 
 
 #Question 1
+""" This can be achieved by splitting the given IP address whenever we encounter a period (".") and 
+creating an array using the split() function. Then, we can use the join() function to concatenate 
+the elements of the array with the required "[.]" separator.
+The process involves splitting the IP address string into individual parts by using the split() function 
+and providing "." as the separator. This creates an array of parts. Next, we can use the join() function 
+to combine the elements of the array back into a string, using the "[.]" separator. This effectively 
+replaces each period with "[.]" in the resulting string.By performing these steps, we obtain the 
+defanged version of the IP address where each period is replaced with "[.]".
+"""
 
 def IpFormatter(address):
     ip = address.split('.')
@@ -37,10 +46,16 @@ print(IpFormatter('1.1.1'))
 print(IpFormatter('257.45.23.12'))
 
 
-# In[39]:
+
 
 
 #Question 2
+""" First, create a string that contains all the vowels. Then, iterate through each letter 
+in the given sentence and check if it is a vowel by verifying its presence in the vowel string.
+To implement this approach, begin by creating a string that includes all the vowels: 'aeiouAEIOU'.
+Next, loop through each letter in the sentence and check if it is a vowel by using the membership 
+operator (in) to verify if the letter is present in the vowel string.
+"""
 def vowelRemover(sentence):
     vowels = ['a','e','i','o','u','A','E','I','O','U']
     new = ""
@@ -68,10 +83,16 @@ print(vowelRemover("@$%$&^!*(*5637895"))
 print(vowelRemover("This is a long sentence with Vowels and Consonants "))
 
 
-# In[45]:
+
 
 
 #Question 3
+"""Given the strings jewels and stones, the approach involves iterating through each stone 
+in a loop and checking if the stone is present in the jewels string. If the stone is found in jewels, the count is increased by 1.
+To implement this approach, start by initializing a variable count to 0.
+Then, iterate through each stone in a loop. For each stone, check if it is present in the 
+jewels string using the membership operator (in). If the stone is found in jewels, increment the count by 1.
+"""
 def countJewels(jewels,stones):
     count = 0;
     for s in stones:
@@ -95,10 +116,14 @@ print(countJewels("zasd","zasd"))
 print(countJewels("",""))
 
 
-# In[64]:
+
 
 
 #Question 4
+""" Find the unique elements in given list, count the occurrences of each unique element into list. 
+If each unique element has a unique no of occurrences, the new list created will have unique count. 
+"""
+
 def uniqueOccurences(array):
     unique = []
     uniquecount = []
@@ -132,10 +157,21 @@ print(uniqueOccurences([]))
 #Output:- True
 
 
-# In[85]:
+
 
 
 #Question 5
+""" When trying to buy the maximum number of toys without duplicates, the approach is to start by 
+purchasing the cheapest toy first. To achieve this, sort the price array in ascending order. 
+Then, iterate through the sorted array and buy toys as long as the available amount allows. 
+Each time a toy is purchased, subtract its price from the available amount and increase the count. 
+Once the amount is not enough to buy the next product, return the count. To implement this 
+approach, begin by sorting the price array in ascending order using a sorting algorithm such 
+as Python's built-in sorted() function. Next, initialize a variable count to 0 and iterate through 
+the sorted price array. For each toy price, check if the available amount is greater than or equal to the price. 
+If it is, subtract the price from the available amount, increment the count by 1, and continue to the next toy. 
+If the available amount is not enough to buy the toy, return the count as the maximum number of toys that can be purchased"""
+
 def maximizeToys(amount,prices):
     count = 0
     prices.sort() #sorting the prices
@@ -170,10 +206,22 @@ print(maximizeToys(40,[10,10,10,10]))
 #output:- 4
 
 
-# In[125]:
+
 
 
 #Question 6
+""" In the process of encoding a URL to a tiny URL, we utilize a randomly generated character 
+sequence as an alternative for the longer URL. This is achieved by maintaining a dictionary 
+where we store the mappings between the long URLs and their corresponding tiny URLs. Whenever we 
+receive a new long URL, we first check if it is present in the dictionary. If it is, we return 
+the associated tiny URL. If it is not found, we encode the long URL, store it in the dictionary,
+and return the newly created tiny URL. To implement this process, start by initializing an 
+empty dictionary url_dict to store the mappings between long URLs and tiny URLs. Next, when encoding a long URL, 
+check if it is already present in the url_dict. If it is, retrieve the associated tiny URL and return it. 
+If the long URL is not found in the dictionary, generate a random character sequence to serve as the tiny URL. 
+Store the long URL and its corresponding tiny URL in the url_dict and return the newly created tiny URL
+ """
+
 import random
 
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -224,14 +272,21 @@ print(encode("https://www.vfagiyihogihifnagif.com/bgsugvicuhsougvu/vgsgibskg/vus
 #output:- http://tinyurl.com/kTCnk2
 
 
-# In[ ]:
+# SQL QUESTIONS
 
-
-
-
-
-# In[ ]:
-
-
+# 1.	Write a query to find all employees of the HR department.
+# SELECT * FROM Employees where DepartmentId in (SELECT Id FROM Departments where name = 'HR')
+# 2.	Write a query to find all employees that work for James Smith.
+# SELECT * FROM Employees where ManagerId in (SELECT Id FROM Employees where FName = 'James' AND LName = 'Smith')
+# 3.	Write a query to find all customers who own a Ford F-150.
+# SELECT * FROM Customers where ID in (SELECT CustomerId FROM Cars where Model = 'Ford F-150')
+# 4.	Write a query to find the number of Mustangs being repaired.
+# SELECT * FROM Customers where ID in (SELECT CustomerId FROM Cars where Model = 'Ford Mustang' and Status = 'Working')
+# 5.	Write a query to find customers who own more than one car.
+# SELECT * FROM Customers where Id in (SELECT CustomerId from Cars GROUP BY CustomerId HAVING COUNT(*)>1);
+# 6.	Write a query to find the total salary for the HR department.
+# SELECT sum(Salary) FROM Employees where DepartmentId in (SELECT Id FROM Departments where name = 'HR')
+# 7.	Write a query to find the total revenue generated by the sales department.
+# SELECT SUM(TotalCost) FROM Cars where EmployeeId in (SELECT Id FROM Employees where DepartmentId in (SELECT Id FROM Departments where Name = 'Sales'))
 
 
